@@ -83,7 +83,8 @@ h1 em{font-style:italic;color:var(--gold)}
 .cdesc{font-size:14px;color:var(--bone-dim);flex:1}
 .cstats{display:flex;gap:16px;font-family:var(--mono);font-size:11px;color:var(--bone-faint);letter-spacing:.08em;margin:16px 0 12px}
 .cstats b{color:var(--gold);font-weight:500}
-.cinstall{font-family:var(--mono);font-size:11px;background:var(--ink);border:1px solid var(--line);border-radius:4px;padding:10px 12px;color:var(--bone-dim);overflow-x:auto;white-space:nowrap;position:relative;cursor:pointer;transition:border-color .2s}
+.cinstall{font-family:var(--mono);font-size:11px;background:var(--ink);border:1px solid var(--line);border-radius:4px;padding:10px 12px;color:var(--bone-dim);overflow-x:auto;white-space:nowrap;position:relative;cursor:pointer;transition:border-color .2s;scrollbar-width:none}
+.cinstall::-webkit-scrollbar{display:none}
 .cinstall:hover{border-color:var(--gold-dim)}
 .cinstall::after{content:"COPY";position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:9px;letter-spacing:.14em;color:var(--bone-faint);background:var(--ink);padding:2px 6px}
 .cinstall.copied::after{content:"COPIED ✓";color:var(--ok)}
