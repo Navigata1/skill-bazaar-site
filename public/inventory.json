@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-06",
+  "generated": "2026-07-07",
   "note": "Every entry is a real, public, non-fork repo owned by IDC. Descriptions come from the repos themselves. Counts on the site are computed from this file — the honest count IS the count.",
   "entries": [
     {
@@ -109,6 +109,15 @@
       "description": "Garnet — Rust rigor. Ruby velocity. One coherent language. A dual-mode systems/scripting language in active development.",
       "install": "git clone https://github.com/Island-Dev-Crew/garnet",
       "license": "See repo"
+    },
+    {
+      "name": "ARCHIPELAGO",
+      "repo": "Navigata1/archipelago",
+      "url": "https://github.com/Navigata1/archipelago",
+      "category": "Orchestration",
+      "description": "Full-cycle autonomous build protocol: typed JSON-Schema contracts at every seam, evidence-gated stages S0-S7, loopback routing, band-capped dogfood scoring, and a tamper-evident hash-chained ledger. Bootstrapped by running itself.",
+      "install": "git clone https://github.com/Navigata1/archipelago && python3 archipelago/scripts/validate_contracts.py",
+      "license": "MIT"
     }
   ],
   "paid_listings": [
