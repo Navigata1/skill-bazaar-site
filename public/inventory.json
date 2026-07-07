@@ -114,7 +114,7 @@
   "paid_listings": [
     {
       "name": "AgentPact Signal Feed — Starter Key",
-      "url": "https://agent-edge-vault-site.vercel.app/#feed",
+      "url": "https://agentpact.islanddevcrew.app/#feed",
       "checkout": "https://buy.stripe.com/aFa6oJ2Kd81oafQdvI0VO05",
       "category": "Feed",
       "description": "1,000 requests/month to GET /v1/signals — AGIF-typed, provenance-hashed agent-economy intelligence behind a working HTTP 402 paywall. $19/mo launch pricing. Live checkout.",
