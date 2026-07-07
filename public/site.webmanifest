@@ -1,17 +1,10 @@
 {
-  "name": "Skill Bazaar — AgentCore",
+  "name": "Skill Bazaar — AgentPact",
   "short_name": "Skill Bazaar",
-  "description": "The agent skill marketplace by Island Development Crew",
+  "description": "Curated catalog of real agent skills from Island Development Crew.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#8b5cf6",
-  "icons": [
-    {
-      "src": "/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "maskable any"
-    }
-  ]
+  "background_color": "#0C151D",
+  "theme_color": "#D9A441",
+  "icons": []
 }

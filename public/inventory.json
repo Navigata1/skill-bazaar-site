@@ -1,0 +1,124 @@
+{
+  "generated": "2026-07-06",
+  "note": "Every entry is a real, public, non-fork repo owned by IDC. Descriptions come from the repos themselves. Counts on the site are computed from this file — the honest count IS the count.",
+  "entries": [
+    {
+      "name": "AGIF Spec",
+      "repo": "Navigata1/agif-spec",
+      "url": "https://github.com/Navigata1/agif-spec",
+      "category": "Spec",
+      "description": "AGIF — Agent Intelligence Format. Open v0.1 draft: typed signals, intent profiles, SHA-256 provenance chains for agent-consumable intelligence. MIT.",
+      "install": "git clone https://github.com/Navigata1/agif-spec && node agif-spec/validators/validate.mjs --self-test",
+      "license": "MIT"
+    },
+    {
+      "name": "Iron Canvas v4.1",
+      "repo": "Navigata1/iron-canvas-skill",
+      "url": "https://github.com/Navigata1/iron-canvas-skill",
+      "category": "Design",
+      "description": "Adaptive multi-agent design orchestration methodology. SOLO/SWARM/MISSION modes, phase gates, Awwwards-grade verification.",
+      "install": "curl -fsSL https://raw.githubusercontent.com/Navigata1/iron-canvas-skill/main/SKILL.md -o ~/.claude/skills/iron-canvas/SKILL.md --create-dirs",
+      "license": "MIT"
+    },
+    {
+      "name": "Build Orchestration",
+      "repo": "Navigata1/build-orchestration-skill",
+      "url": "https://github.com/Navigata1/build-orchestration-skill",
+      "category": "Orchestration",
+      "description": "Agent skill for orchestrating multi-step software builds — planning, dispatch, and verification discipline for agent crews.",
+      "install": "git clone https://github.com/Navigata1/build-orchestration-skill",
+      "license": "MIT"
+    },
+    {
+      "name": "YPE Pipeline",
+      "repo": "Navigata1/ype-pipeline-skill",
+      "url": "https://github.com/Navigata1/ype-pipeline-skill",
+      "category": "Pipeline",
+      "description": "YouTube playlist visual intelligence pipeline — extract, analyze, and synthesize insight from long-form video at playlist scale.",
+      "install": "git clone https://github.com/Navigata1/ype-pipeline-skill",
+      "license": "MIT"
+    },
+    {
+      "name": "Dogfood Readiness",
+      "repo": "Navigata1/dogfood-readiness",
+      "url": "https://github.com/Navigata1/dogfood-readiness",
+      "category": "QA",
+      "description": "Evidence-first dogfood readiness audit toolkit and agent skill — is this thing actually ready to use? Prove it.",
+      "install": "git clone https://github.com/Navigata1/dogfood-readiness",
+      "license": "MIT"
+    },
+    {
+      "name": "NeuralForge Memory Mastery",
+      "repo": "Navigata1/neuralforge-memory-mastery",
+      "url": "https://github.com/Navigata1/neuralforge-memory-mastery",
+      "category": "Memory",
+      "description": "The Memory Governance Layer — trust, verification, and portability for agent memory systems.",
+      "install": "git clone https://github.com/Navigata1/neuralforge-memory-mastery",
+      "license": "MIT"
+    },
+    {
+      "name": "Forge Recall",
+      "repo": "Navigata1/forge-recall",
+      "url": "https://github.com/Navigata1/forge-recall",
+      "category": "Memory",
+      "description": "Memory governance: audit, verify, and surgically enhance any existing agent memory store.",
+      "install": "git clone https://github.com/Navigata1/forge-recall",
+      "license": "MIT"
+    },
+    {
+      "name": "Forge Genesis",
+      "repo": "Navigata1/forge-genesis",
+      "url": "https://github.com/Navigata1/forge-genesis",
+      "category": "Memory",
+      "description": "Memory governance: bootstrap a complete governed 6-layer memory system from zero.",
+      "install": "git clone https://github.com/Navigata1/forge-genesis",
+      "license": "MIT"
+    },
+    {
+      "name": "Forge Hivemind",
+      "repo": "Navigata1/forge-hivemind",
+      "url": "https://github.com/Navigata1/forge-hivemind",
+      "category": "Memory",
+      "description": "Memory governance: cross-agent, cross-family memory consensus — sync, arbitrate, converge.",
+      "install": "git clone https://github.com/Navigata1/forge-hivemind",
+      "license": "MIT"
+    },
+    {
+      "name": "NorthStar Bootstrap (NBB)",
+      "repo": "Navigata1/NBB",
+      "url": "https://github.com/Navigata1/NBB",
+      "category": "Framework",
+      "description": "NorthStar Bootstrap edition — the NorthStar framework ecosystem's shell-native bootstrapper.",
+      "install": "git clone https://github.com/Navigata1/NBB",
+      "license": "MIT"
+    },
+    {
+      "name": "NorthStar CLI (NBCLI)",
+      "repo": "Navigata1/NBCLI",
+      "url": "https://github.com/Navigata1/NBCLI",
+      "category": "Framework",
+      "description": "NorthStar Bootstrap CLI edition — TypeScript command-line entry into the NorthStar build framework.",
+      "install": "git clone https://github.com/Navigata1/NBCLI",
+      "license": "MIT"
+    },
+    {
+      "name": "Garnet",
+      "repo": "Island-Dev-Crew/garnet",
+      "url": "https://github.com/Island-Dev-Crew/garnet",
+      "category": "Language",
+      "description": "Garnet — Rust rigor. Ruby velocity. One coherent language. A dual-mode systems/scripting language in active development.",
+      "install": "git clone https://github.com/Island-Dev-Crew/garnet",
+      "license": "See repo"
+    }
+  ],
+  "paid_listings": [
+    {
+      "name": "AgentPact Signal Feed — Starter Key",
+      "url": "https://agent-edge-vault-site.vercel.app/#feed",
+      "checkout": "https://buy.stripe.com/test_aFa6oJ2Kd81oafQdvI0VO05",
+      "category": "Feed",
+      "description": "1,000 requests/month to GET /v1/signals — AGIF-typed, provenance-hashed agent-economy intelligence behind a working HTTP 402 paywall. $19/mo launch pricing. Checkout in Stripe test mode until GA flip.",
+      "price": "$19/mo"
+    }
+  ]
+}

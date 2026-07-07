@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skill Bazaar — Real Skills for Working Agents · AgentPact</title>
+<meta name="description" content="A curated catalog of real, public, working agent skills and frameworks from Island Development Crew. Honest counts, real install commands, live GitHub stats. Part of the AgentPact suite.">
+<link rel="canonical" href="https://skill-bazaar-site.vercel.app">
+<meta property="og:title" content="Skill Bazaar — real skills for working agents">
+<meta property="og:description" content="Small catalog, every entry real. Curated by a human at Island Development Crew.">
+<meta property="og:url" content="https://skill-bazaar-site.vercel.app">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C151D;--deep:#101C26;--panel:#13212D;
+  --bone:#E9E2D0;--bone-dim:rgba(233,226,208,.58);--bone-faint:rgba(233,226,208,.32);
+  --line:rgba(233,226,208,.13);--line-soft:rgba(233,226,208,.07);
+  --gold:#D9A441;--gold-dim:rgba(217,164,65,.45);
+  --teal:#3FB8AF;--coral:#E2654A;--ok:#6FBF73;
+  --display:'Fraunces',serif;--body:'Archivo',sans-serif;--mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--bone);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);opacity:.7}
+h2.sec{font-family:var(--display);font-weight:500;font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.08;letter-spacing:-.015em;margin:20px 0 16px}
+h2.sec em{font-style:italic;color:var(--gold)}
+.lede{color:var(--bone-dim);max-width:660px;font-size:17.5px}
+.chip{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;border-radius:3px;border:1px solid;display:inline-block}
+.chip.lab{color:var(--bone-faint);border-color:var(--line)}
+.chip.gold{color:var(--gold);border-color:var(--gold-dim)}
+.chip.teal{color:var(--teal);border-color:rgba(63,184,175,.45)}
+.chip.ok{color:var(--ok);border-color:rgba(111,191,115,.5)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+section{padding:100px 0;position:relative}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(12,21,29,.74);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.navin{max-width:1240px;margin:0 auto;padding:0 32px;height:66px;display:flex;align-items:center;gap:30px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600}
+.brand .mark{width:30px;height:30px;border:1.4px solid var(--gold);border-radius:4px;display:grid;place-items:center;transform:rotate(45deg)}
+.brand .mark::before{content:"";width:8px;height:8px;background:var(--gold)}
+.brand small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--bone-faint);font-weight:400}
+.navlinks{display:flex;gap:24px;margin-left:auto;font-size:14.5px;color:var(--bone-dim)}
+.navlinks a:hover{color:var(--bone)}
+.navcta{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;border:1px solid var(--gold);color:var(--gold);padding:9px 18px;border-radius:3px;transition:background .25s,color .25s}
+.navcta:hover{background:var(--gold);color:var(--ink)}
+
+header{position:relative;padding:170px 0 90px;overflow:hidden;text-align:center}
+.stallcanvas{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.heroveil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(12,21,29,.05),rgba(12,21,29,.9) 75%)}
+.heroin{position:relative;z-index:2}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--bone-faint);display:flex;gap:20px;flex-wrap:wrap;margin-bottom:26px;justify-content:center}
+.kicker b{color:var(--gold);font-weight:500}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(2.7rem,6.6vw,5rem);line-height:1.03;letter-spacing:-.022em;max-width:19ch;margin:0 auto}
+h1 em{font-style:italic;color:var(--gold)}
+.herosub{margin:26px auto 34px;max-width:620px;color:var(--bone-dim);font-size:18px}
+.statline{display:flex;justify-content:center;flex-wrap:wrap;margin:0 auto;border:1px solid var(--line);border-radius:6px;max-width:720px;background:rgba(16,28,38,.6)}
+.statline>div{padding:16px 26px;border-right:1px solid var(--line);flex:1;min-width:150px}
+.statline>div:last-child{border-right:none}
+.statline .n{font-family:var(--display);font-size:26px;font-weight:500}
+.statline .n i{font-style:normal;color:var(--gold)}
+.statline .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-faint);margin-top:2px}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:46px 0 30px}
+.fbtn{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;padding:7px 15px;border-radius:3px;border:1px solid var(--line);color:var(--bone-faint);transition:all .2s}
+.fbtn:hover{color:var(--bone);border-color:var(--bone-faint)}
+.fbtn.on{border-color:var(--gold-dim);color:var(--gold);background:rgba(217,164,65,.08)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:18px}
+.card{border:1px solid var(--line);border-radius:8px;background:var(--deep);padding:24px;display:flex;flex-direction:column;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.card:hover{transform:translateY(-4px);border-color:var(--gold-dim);box-shadow:0 18px 50px rgba(217,164,65,.07)}
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}
+.cname{font-family:var(--display);font-weight:500;font-size:21px}
+.cdesc{font-size:14px;color:var(--bone-dim);flex:1}
+.cstats{display:flex;gap:16px;font-family:var(--mono);font-size:11px;color:var(--bone-faint);letter-spacing:.08em;margin:16px 0 12px}
+.cstats b{color:var(--gold);font-weight:500}
+.cinstall{font-family:var(--mono);font-size:11px;background:var(--ink);border:1px solid var(--line);border-radius:4px;padding:10px 12px;color:var(--bone-dim);overflow-x:auto;white-space:nowrap;position:relative;cursor:pointer;transition:border-color .2s}
+.cinstall:hover{border-color:var(--gold-dim)}
+.cinstall::after{content:"COPY";position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:9px;letter-spacing:.14em;color:var(--bone-faint);background:var(--ink);padding:2px 6px}
+.cinstall.copied::after{content:"COPIED ✓";color:var(--ok)}
+.clinks{display:flex;gap:14px;margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+.clinks a{color:var(--gold)}
+.clinks a:hover{text-decoration:underline}
+
+.paidcard{border:1px solid var(--gold-dim);border-radius:8px;background:linear-gradient(160deg,rgba(217,164,65,.06),var(--deep) 55%);padding:30px;margin-top:44px;display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}
+.paidcard h4{font-family:var(--display);font-weight:500;font-size:24px;margin:10px 0 8px}
+.paidcard p{font-size:14.5px;color:var(--bone-dim);max-width:60ch}
+.paidcard .price{font-family:var(--display);font-size:34px;text-align:center}
+.paidcard .price small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--bone-faint);margin-top:4px}
+.btn{font-family:var(--mono);font-size:13px;letter-spacing:.08em;padding:13px 24px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;transition:transform .25s,background .25s,color .25s,border-color .25s}
+.btn.gold{background:var(--gold);color:var(--ink);font-weight:500}
+.btn.gold:hover{transform:translateY(-2px);background:#E8B858}
+.btn.gold:active{transform:translateY(0)}
+.btn.ghost{border:1px solid var(--line);color:var(--bone-dim)}
+.btn.ghost:hover{border-color:var(--bone-dim);color:var(--bone);transform:translateY(-2px)}
+
+.honest{background:var(--deep);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:22px;margin-top:46px}
+.hcell{border-top:1px solid var(--line);padding-top:20px}
+.hcell .hn{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+.hcell h4{font-family:var(--display);font-weight:500;font-size:21px;margin-bottom:8px}
+.hcell p{font-size:14.5px;color:var(--bone-dim)}
+
+.cta{text-align:center;padding:130px 0}
+.cta h2{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-.02em;line-height:1.05;margin-bottom:18px}
+.cta h2 em{font-style:italic;color:var(--gold)}
+.cta p{color:var(--bone-dim);max-width:560px;margin:0 auto 36px}
+footer{border-top:1px solid var(--line-soft);padding:42px 0;background:var(--ink)}
+.footin{max-width:1240px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.fmeta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--bone-faint)}
+.fmeta a{color:var(--gold)}
+.flinks{display:flex;gap:20px;font-size:13.5px;color:var(--bone-dim);flex-wrap:wrap}
+.flinks a:hover{color:var(--gold)}
+
+@media (max-width:900px){.navlinks{display:none}section{padding:76px 0}header{padding-top:130px}.paidcard{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="navin">
+    <a class="brand" href="#top">
+      <span class="mark" aria-hidden="true"></span>
+      <span style="margin-left:6px">Skill Bazaar<small>AGENTPACT · L3 · ISLAND DEV CREW</small></span>
+    </a>
+    <div class="navlinks">
+      <a href="#catalog">Catalog</a>
+      <a href="#feedkey">Paid Feed</a>
+      <a href="#rules">House Rules</a>
+      <a href="https://agent-edge-vault-site.vercel.app">AgentPact HQ</a>
+    </div>
+    <a class="navcta" href="#list">LIST A SKILL</a>
+  </div>
+</nav>
+
+<header id="top">
+  <canvas class="stallcanvas" id="stalls" aria-hidden="true"></canvas>
+  <div class="heroveil" aria-hidden="true"></div>
+  <div class="wrap heroin">
+    <div class="kicker">
+      <span>THE SKILLS LAYER OF AGENTPACT</span>
+      <span><b>EVERY ENTRY REAL · CURATED BY A HUMAN</b></span>
+      <span>HUNTSVILLE, AL</span>
+    </div>
+    <h1>Small catalog. <em>Every entry real.</em></h1>
+    <p class="herosub">Skills, frameworks, and specs the IDC shop actually ships — with install commands that work, descriptions taken from the repos themselves, and stats pulled live from GitHub. No invented install counts. No imaginary publishers.</p>
+    <div class="statline">
+      <div><div class="n" id="statcount">12</div><div class="l">Entries · computed, not claimed</div></div>
+      <div><div class="n" id="statcats">7</div><div class="l">Categories</div></div>
+      <div><div class="n">1</div><div class="l">Paid listing · real fulfillment</div></div>
+      <div><div class="n"><i>0</i></div><div class="l">Fabricated metrics</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="catalog" style="padding-top:30px">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Stalls · Live GitHub Stats · <a href="/inventory.json" style="color:var(--gold);text-decoration:underline">inventory.json</a></div>
+    <h2 class="sec reveal">Browse the <em>bazaar.</em></h2>
+    <div class="filters reveal" id="filters"></div>
+    <div class="grid" id="grid"></div>
+
+    <div class="paidcard reveal" id="feedkey">
+      <div>
+        <span class="chip gold">PAID LISTING · AGENTPACT FEED LAYER</span>
+        <h4>AgentPact Signal Feed — Starter Key</h4>
+        <p>1,000 requests/month to <span style="font-family:var(--mono);font-size:13px;color:var(--bone)">GET /v1/signals</span> — AGIF-typed, provenance-hashed agent-economy intelligence behind a working HTTP&nbsp;402 paywall. Key minted instantly after checkout. <span style="color:var(--bone-faint)">Checkout runs in Stripe test mode until GA flip — no card is charged today, and this label will change when that changes.</span></p>
+        <div class="clinks" style="margin-top:10px"><a href="https://agent-edge-vault-site.vercel.app/#feed">SEE THE 402 IN ACTION →</a></div>
+      </div>
+      <div style="text-align:center">
+        <div class="price">$19<small>/MONTH · LAUNCH PRICING</small></div>
+        <a class="btn gold" style="margin-top:14px" href="https://buy.stripe.com/test_aFa6oJ2Kd81oafQdvI0VO05">GET A KEY →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="honest" id="rules">
+  <div class="wrap">
+    <div class="eyebrow reveal">House Rules · Why This Catalog Is Small</div>
+    <h2 class="sec reveal">The bazaar's <em>honesty policy.</em></h2>
+    <div class="hgrid">
+      <div class="hcell reveal"><div class="hn">RULE 01</div><h4>Real repos only</h4><p>Every entry links to a public, non-fork repository owned by IDC. Fork mirrors and aspirational products don't get stalls.</p></div>
+      <div class="hcell reveal"><div class="hn">RULE 02</div><h4>Numbers compute themselves</h4><p>Stars and freshness come from the GitHub API in your browser. The entry count is the length of inventory.json. Nothing on this page is typed in by marketing.</p></div>
+      <div class="hcell reveal"><div class="hn">RULE 03</div><h4>Paid means fulfilled</h4><p>A paid listing appears only when checkout, delivery, and metering all work end-to-end. Right now there is exactly one. That's the honest count.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="list">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="justify-content:center">Built Something For Agents?</div>
+    <h2 class="reveal">Earn a stall <em>in the bazaar.</em></h2>
+    <p class="reveal">The catalog is curated by a human, and the bar is the same one we hold ourselves to: public repo, honest README, something an agent can actually use. Email a link — replies come from a person, not a pipeline.</p>
+    <a class="btn gold reveal" href="mailto:hello@islanddevcrew.com?subject=Skill%20Bazaar%20listing&body=Repo%20URL%3A%0AWhat%20it%20does%20for%20agents%3A%0A">SUBMIT A SKILL →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footin">
+    <div class="brand"><span class="mark" aria-hidden="true"></span><span style="font-size:14.5px;margin-left:6px">Skill Bazaar<small>AGENTPACT · EDGE · FEED · SKILLS · MEMORY</small></span></div>
+    <div class="flinks"><a href="#catalog">Catalog</a><a href="https://agent-edge-vault-site.vercel.app">AgentPact HQ</a><a href="https://github.com/Navigata1/agif-spec">AGIF Spec</a><a href="mailto:hello@islanddevcrew.com">Contact</a></div>
+    <div class="fmeta">AN <a href="https://islanddevcrew.com">ISLAND DEVELOPMENT CREW</a> VENTURE · © 2026 ISLAND DEVELOPMENT CREW LLC · HUNTSVILLE, AL</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- hero canvas: drifting market-stall lanterns ---------- */
+(function(){
+  var cv=document.getElementById("stalls"),ctx=cv.getContext("2d"),W,H,DPR,vis=false,raf;
+  function size(){DPR=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+  size();addEventListener("resize",size);
+  var lanterns=[];for(var i=0;i<22;i++)lanterns.push({x:Math.random(),y:Math.random(),s:1.2+Math.random()*2.4,v:.00004+Math.random()*.00012,ph:Math.random()*6.28});
+  function frame(t){
+    if(!vis)return;
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle="rgba(233,226,208,.045)";ctx.lineWidth=1;
+    for(var g=1;g<7;g++){ctx.beginPath();ctx.moveTo(W*g/7,0);ctx.lineTo(W*g/7,H);ctx.stroke();}
+    lanterns.forEach(function(l){
+      var y=(l.y + (RM?0:t*l.v))%1;
+      var flick=.55+.45*Math.sin((RM?0:t*.002)+l.ph);
+      var lx=l.x*W, ly=y*H;
+      var grad=ctx.createRadialGradient(lx,ly,0,lx,ly,l.s*9);
+      grad.addColorStop(0,"rgba(217,164,65,"+(.5*flick)+")");
+      grad.addColorStop(1,"rgba(217,164,65,0)");
+      ctx.fillStyle=grad;ctx.beginPath();ctx.arc(lx,ly,l.s*9,0,7);ctx.fill();
+      ctx.fillStyle="rgba(217,164,65,"+(.65*flick)+")";ctx.beginPath();ctx.arc(lx,ly,l.s,0,7);ctx.fill();
+    });
+    if(!RM)raf=requestAnimationFrame(frame);
+  }
+  new IntersectionObserver(function(en){en.forEach(function(e){
+    if(e.isIntersecting){vis=true;if(RM){frame(0);vis=false;}else raf=requestAnimationFrame(frame);}
+    else{vis=false;if(raf)cancelAnimationFrame(raf);}
+  });},{threshold:.05}).observe(cv);
+})();
+
+/* ---------- catalog ---------- */
+var INV=null,activeCat="All";
+function esc(s){return String(s).replace(/[<>&"]/g,function(c){return{"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c];});}
+function ghStats(repo,el){
+  var ck="gh:"+repo,cached=null;
+  try{cached=JSON.parse(localStorage.getItem(ck)||"null");}catch(e){}
+  if(cached&&Date.now()-cached.t<216e5){render(cached.d);return;}
+  fetch("https://api.github.com/repos/"+repo).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d)return;
+    var data={stars:d.stargazers_count,pushed:d.pushed_at};
+    try{localStorage.setItem(ck,JSON.stringify({t:Date.now(),d:data}));}catch(e){}
+    render(data);
+  }).catch(function(){});
+  function render(d){
+    if(!d||!el.isConnected)return;
+    var days=Math.max(0,Math.round((Date.now()-new Date(d.pushed).getTime())/864e5));
+    el.innerHTML='<span>★ <b>'+d.stars+'</b></span><span>UPDATED <b>'+(days===0?"TODAY":days+"D AGO")+'</b></span><span style="color:var(--bone-faint)">LIVE FROM GITHUB</span>';
+  }
+}
+function draw(){
+  var grid=document.getElementById("grid");grid.innerHTML="";
+  INV.entries.filter(function(e){return activeCat==="All"||e.category===activeCat;}).forEach(function(e){
+    var card=document.createElement("div");card.className="card";
+    card.innerHTML='<div class="chead"><div class="cname">'+esc(e.name)+'</div><span class="chip gold">'+esc(e.category).toUpperCase()+'</span></div>'
+      +'<div class="cdesc">'+esc(e.description)+'</div>'
+      +'<div class="cstats">★ — · fetching…</div>'
+      +'<div class="cinstall" role="button" tabindex="0" title="Click to copy">'+esc(e.install)+'</div>'
+      +'<div class="clinks"><a href="'+esc(e.url)+'">GITHUB →</a><span style="color:var(--bone-faint)">'+esc(e.license)+'</span></div>';
+    var inst=card.querySelector(".cinstall");
+    function copy(){navigator.clipboard&&navigator.clipboard.writeText(e.install).then(function(){inst.classList.add("copied");setTimeout(function(){inst.classList.remove("copied");},1500);});}
+    inst.onclick=copy;inst.onkeydown=function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();copy();}};
+    grid.appendChild(card);
+    ghStats(e.repo,card.querySelector(".cstats"));
+  });
+}
+fetch("/inventory.json").then(function(r){return r.json();}).then(function(inv){
+  INV=inv;
+  document.getElementById("statcount").textContent=inv.entries.length;
+  var cats=["All"].concat(Array.from(new Set(inv.entries.map(function(e){return e.category;}))));
+  document.getElementById("statcats").textContent=cats.length-1;
+  var f=document.getElementById("filters");
+  cats.forEach(function(c){
+    var b=document.createElement("button");b.className="fbtn"+(c==="All"?" on":"");b.textContent=c.toUpperCase();
+    b.onclick=function(){activeCat=c;document.querySelectorAll(".fbtn").forEach(function(x){x.classList.remove("on");});b.classList.add("on");draw();};
+    f.appendChild(b);
+  });
+  draw();
+});
+
+/* ---------- reveals ---------- */
+var ro=new IntersectionObserver(function(en){
+  en.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");ro.unobserve(e.target);}});
+},{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll(".reveal").forEach(function(el,i){el.style.transitionDelay=(i%3)*0.07+"s";ro.observe(el);});
+})();
+</script>
+</body>
+</html>
