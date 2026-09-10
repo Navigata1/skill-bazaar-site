@@ -13,10 +13,13 @@ Start with one visitor problem: a broken source link, unclear outcome, incorrect
 ```bash
 npm ci --ignore-scripts
 npm run check
+npm run smoke:production
 npm audit
 ```
 
 Node 22.18+ is required for the TypeScript test runner. The project uses system fonts, Next/React, and ordinary CSS; do not add remote fonts, tracking, or decorative dependencies without a demonstrated need.
+
+Keep unknown `/skills/*` routes recoverable without JavaScript: a real HTTP 404, noindex, main heading, and catalog link must be present in the HTML tree, not merely in a serialized hydration payload. The smoke gate uses the parser bundled with the pinned Next version and excludes scripts, templates, and hidden nodes; preserve its negative fixtures when upgrading Next. Do not add a page at the reserved internal rewrite target `/__catalog_not_found__`.
 
 ## Claims and access
 

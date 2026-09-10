@@ -32,3 +32,5 @@ jobs:
         run: npm run check
       - name: Check known high and critical dependency advisories
         run: npm audit --audit-level=high
+      - name: Test actual production HTML and fail-closed recovery routes
+        run: npm run smoke:production

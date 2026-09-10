@@ -35,6 +35,8 @@ npm run build
 npm run start -- --hostname 127.0.0.1
 ```
 
+For the same automated production HTTP gate used in CI, run `npm run smoke:production` after the build. It starts its own loopback server on port 4277, checks real HTML and recovery routes without executing page JavaScript, then stops only that server. An occupied port fails the gate; it does not reuse or terminate another process. To select a different port, use `npm run smoke:production -- 4195`.
+
 ### Repository map
 
 | Surface                                        | Purpose                                                                 |
@@ -50,7 +52,7 @@ npm run start -- --hostname 127.0.0.1
 
 ### Evidence and limits
 
-Run `npm run test`, `npm run lint`, `npm run typecheck`, `npm run build`, and `npm audit`. Local tests do not prove external link freshness, browser accessibility, hosted rendering, or independent release acceptance. Check those separately before publication.
+Run `npm run test`, `npm run lint`, `npm run typecheck`, `npm run build`, `npm run smoke:production`, and `npm audit`. Local tests do not prove external link freshness, browser accessibility, hosted rendering, or independent release acceptance. Check those separately before publication.
 
 The site uses Next/React, ordinary CSS, local vector icons, and system fonts. It contains no tracking SDK, account system, database, or checkout backend. Search stays in the browser. See the [catalog policy](app/about/page.tsx) for the visitor-facing boundaries.
 

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { assertRecoveryDocument, initialDocument } from "./html-checks.mjs";
 
 const base = new URL(process.argv[2] ?? "http://127.0.0.1:4192");
 if (
@@ -35,8 +36,14 @@ for (const path of pages) {
   ])
     assert.ok(csp.includes(directive), `${path}: missing ${directive}`);
   const html = await response.text();
-  assert.match(html, /<main\b[^>]*id="main"/);
-  assert.equal((html.match(/<h1\b/g) ?? []).length, 1, `${path} needs one H1`);
+  const document = initialDocument(html);
+  const main = document.querySelector("main#main");
+  assert.ok(main, `${path}: missing initial HTML main`);
+  assert.equal(
+    document.querySelectorAll("h1").length,
+    1,
+    `${path} needs one H1`,
+  );
   const expected = path === "/" ? canonical : canonical + path;
   assert.ok(
     html.includes(`rel="canonical" href="${expected}"`),
@@ -47,10 +54,9 @@ for (const path of pages) {
     `${path}: unverified checkout exposed`,
   );
   if (path === "/") {
-    const initialHTML = html.split("</main>")[0];
     for (const entry of inventory.entries)
       assert.ok(
-        initialHTML.includes(`id="entry-${entry.id}"`),
+        main.querySelector(`#entry-${entry.id}`),
         `missing server-rendered ${entry.id}`,
       );
   }
@@ -58,13 +64,36 @@ for (const path of pages) {
     `PASS ${path}: HTML, heading, canonical, headers, checkout boundary`,
   );
 }
-for (const path of ["/not-a-real-page", "/skills/not-a-real-skill"]) {
+for (const path of [
+  "/not-a-real-page",
+  "/skills/not-a-real-skill",
+  "/skills",
+  "/skills/forge-50/not-a-page",
+  "/skills/%E0%A4%A",
+]) {
   const response = await fetch(new URL(path, base), {
     signal: AbortSignal.timeout(15000),
   });
   assert.equal(response.status, 404, `${path} must fail404`);
-  assert.ok((await response.text()).includes("Not in this catalog"));
-  console.log(`PASS ${path}:404`);
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.ok(
+    (response.headers.get("content-security-policy") ?? "").includes(
+      "frame-ancestors 'none'",
+    ),
+  );
+  assertRecoveryDocument(await response.text(), path);
+  console.log(`PASS ${path}:404, noindex, real HTML heading and recovery link`);
+}
+for (const agent of ["Mozilla/5.0", "Googlebot", "facebookexternalhit"]) {
+  const path = `/skills/unknown-${agent.replace(/[^a-zA-Z]/g, "").toLowerCase()}`;
+  const response = await fetch(new URL(path, base), {
+    headers: { "user-agent": agent },
+    signal: AbortSignal.timeout(15000),
+  });
+  assert.equal(response.status, 404, `${agent} must receive 404`);
+  assertRecoveryDocument(await response.text(), `${path} (${agent})`);
+  console.log(`PASS ${agent}: real HTML recovery without hydration`);
 }
 const legacy = await fetch(new URL("/skill-bazaar.html", base), {
   redirect: "manual",

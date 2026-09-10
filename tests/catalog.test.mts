@@ -89,6 +89,36 @@ test("GitHub source document links are local to their repository", () => {
     "https://github.com/Island-Dev-Crew/idc-skills/blob/main/docs/start%20here.md",
   );
 });
+test("required document paths cannot silently become repository root links", () => {
+  for (const key of ["guidePath", "licensePath"] as const) {
+    for (const value of ["", " ", undefined, null]) {
+      assert.throws(
+        () => validateCatalog([{ ...entries[0], [key]: value } as Entry]),
+        /Missing|path/,
+        `${key} must reject ${String(value)}`,
+      );
+    }
+  }
+  assert.equal(sourceUrl(entries[0]), `https://github.com/${entries[0].repo}`);
+  for (const value of ["", " "])
+    assert.throws(() => sourceUrl(entries[0], value), /path/);
+});
+test("included members require both a readable name and a document path", () => {
+  for (const key of ["name", "path"] as const) {
+    for (const value of ["", " ", undefined, null]) {
+      const child = {
+        name: "Recall",
+        path: "forge-recall/README.md",
+        [key]: value,
+      };
+      assert.throws(
+        () => validateCatalog([{ ...entries[0], includes: [child] } as Entry]),
+        /Missing|path/,
+        `included ${key} must reject ${String(value)}`,
+      );
+    }
+  }
+});
 test("memory children are grouped rather than inflated into catalog entries", () => {
   const memory = entries.filter((entry) => entry.id === "memory-mastery");
   assert.equal(memory.length, 1);

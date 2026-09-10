@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { Arrow } from "@/components/icon";
 import { sourceUrl } from "@/lib/catalog";
 import { CANONICAL, entries } from "@/lib/data";
-// Unknown slugs reach our explicit notFound() guard. With dynamicParams=false,
-// Next16.3.4 logs an internal NoFallbackError even though it returns a404.
+// The request boundary handles unknown slugs before rendering. Keep the page
+// guard as defense in depth if a future caller bypasses that boundary.
 export const dynamicParams = true;
 export function generateStaticParams() {
   return entries.map((entry) => ({ slug: entry.id }));

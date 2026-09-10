@@ -39,8 +39,10 @@ export function sourceUrl(
   if (!/^[a-zA-Z0-9][a-zA-Z0-9_.-]*$/.test(entry.branch))
     throw new Error("Invalid source branch");
   const base = `https://github.com/${entry.repo}`;
-  if (!file) return base;
+  if (file === undefined) return base;
   if (
+    typeof file !== "string" ||
+    !file.trim() ||
     file.startsWith("/") ||
     file.split("/").some((part) => !part || part === "." || part === "..") ||
     /[\\?#\x00-\x1f]/.test(file)
@@ -67,6 +69,8 @@ export function validateCatalog(entries: Entry[]): void {
       "description",
       "start",
       "caution",
+      "guidePath",
+      "licensePath",
     ] as const) {
       if (typeof entry[key] !== "string" || !entry[key].trim())
         throw new Error(`Missing ${key}`);
@@ -81,7 +85,12 @@ export function validateCatalog(entries: Entry[]): void {
       throw new Error("Invalid outcome");
     sourceUrl(entry, entry.guidePath);
     sourceUrl(entry, entry.licensePath);
-    for (const child of entry.includes ?? []) sourceUrl(entry, child.path);
+    for (const child of entry.includes ?? []) {
+      for (const key of ["name", "path"] as const)
+        if (typeof child[key] !== "string" || !child[key].trim())
+          throw new Error(`Missing included member ${key}`);
+      sourceUrl(entry, child.path);
+    }
   }
 }
 export function filterEntries<T extends CatalogEntry>(
